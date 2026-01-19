@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: node_app
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "postgres://user3:2005@db:5432/postgres"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    command: ["node", "input.js"]
+
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: user3
+      POSTGRES_PASSWORD: 2005
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
