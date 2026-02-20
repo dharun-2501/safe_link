@@ -125,8 +125,6 @@ app.post('/send',uploaded.single('file2'),async(req,res)=>{
         userinput:text,
         link
     })
-
-
 })
 
 
@@ -148,17 +146,13 @@ app.get('/fetch/:id',async(req,res)=>{
         limit:req.rateLimit.limit,
         remain:req.rateLimit.remaining,
         decrypted_value:stored_decrypt,
-    
     })
-
 })
 
 
 app.listen(3000,()=>{
     console.log("server is listening on the port 3000")
 })
-
-
 // where i have to be done many thing i can need to 
 
 
